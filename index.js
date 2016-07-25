@@ -46,16 +46,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set('view engine', 'jade');
 app.get('/', function(req, res) {
-    var comments = get_comments();
-    res.render("index",
-               { agent: req.headers['user-agent'],
-                 hostname: os.hostname(),
-                 os: os.type(),
-                 nodeversion: process.version,
-                 time: new Date(),
-                 admin: (process.env.APP_ADMIN_EMAIL || "admin@unconfigured-value.com" ),
-                 comments: get_comments()
-               });
+   res.send(`Hello World! - ${os.hostname()}`);
+   //  var comments = get_comments();
+   //  res.render("index",
+   //             { agent: req.headers['user-agent'],
+   //              hostname: os.hostname(),
+   //              os: os.type(),
+   //              nodeversion: process.version,
+   //              time: new Date(),
+   //              admin: (process.env.APP_ADMIN_EMAIL || "admin@unconfigured-value.com" ),
+   //              comments: get_comments()
+   //             });
 });
 
 app.post('/', function(req, res) {
